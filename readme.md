@@ -26,7 +26,7 @@ MongoDB es una base de datos NoSQL orientada a documentos, donde los datos se al
 - **Documento**: Unidad de datos en MongoDB, similar a un objeto JSON.
 - **Campo**: Par clave-valor dentro de un documento.
 
-![Estructura mongoDB]([https://formadoresit.es/wp-content/uploads/2019/05/image-4.png])
+![Estructura mongoDB](https://formadoresit.es/wp-content/uploads/2019/05/image-4.png)
 
 ## Instalación de MongoDB Atlas y Configuración en VSCode
 
