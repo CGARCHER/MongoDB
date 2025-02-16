@@ -1,4 +1,4 @@
-# Práctica de MongoDB: "Tienda de Ropa"
+# Ejercicio "Tienda de Ropa"
 
 ## Enunciado
 
