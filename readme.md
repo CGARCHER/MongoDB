@@ -193,3 +193,217 @@ Sigue estos pasos para configurar un clúster de MongoDB Atlas y conectarte a é
 2. Abre VSCode y ve a la vista de MongoDB en la barra lateral izquierda.
 3. Haz clic en "Add Connection" y pega la cadena de conexión copiada anteriormente.
 4. Guarda la conexión y debería aparecer en la lista de conexiones.
+
+## Crear (Create)
+
+Para insertar un documento en una colección utilizamos el comando `insertOne()` o `insertMany()`.
+
+### Ejemplo con `insertOne()`:
+```shell
+use mi_base_de_datos
+db.mi_coleccion.insertOne({
+    nombre: "Juan Pérez",
+    edad: 30,
+    ocupacion: "Desarrollador"
+})
+```
+
+### Sintaxis:
+```shell
+db.<nombre_coleccion>.insertOne({<documento>})
+```
+
+- `<nombre_coleccion>`: Nombre de la colección donde se insertará el documento.
+- `<documento>`: Documento BSON que se insertará.
+
+### Ejemplo con `insertMany()`:
+```shell
+db.mi_coleccion.insertMany([
+    {
+        nombre: "Ana Gómez",
+        edad: 25,
+        ocupacion: "Diseñadora"
+    },
+    {
+        nombre: "Luis Torres",
+        edad: 35,
+        ocupacion: "Gerente"
+    }
+])
+```
+
+### Sintaxis:
+```shell
+db.<nombre_coleccion>.insertMany([{<documento1>}, {<documento2>}, ...])
+```
+
+- `<nombre_coleccion>`: Nombre de la colección donde se insertarán los documentos.
+- `<documento>`: Documentos BSON que se insertarán.
+
+## Leer (Read)
+
+Para leer documentos de una colección utilizamos el comando `find()`.
+
+### Ejemplo para leer todos los documentos:
+```shell
+db.mi_coleccion.find()
+```
+
+### Ejemplo para leer documentos con un criterio:
+```shell
+db.mi_coleccion.find({ nombre: "Juan Pérez" })
+```
+
+### Sintaxis:
+```shell
+db.<nombre_coleccion>.find({<criterio>})
+```
+
+- `<nombre_coleccion>`: Nombre de la colección de la cual se leerán los documentos.
+- `<criterio>`: Criterio de búsqueda para filtrar los documentos (puede estar vacío para leer todos los documentos).
+
+### Operadores de búsqueda
+
+#### Operador `$gt` (mayor que):
+```shell
+db.mi_coleccion.find({ edad: { $gt: 30 } })
+```
+Encuentra documentos donde la edad sea mayor que 30.
+
+#### Operador `$lt` (menor que):
+```shell
+db.mi_coleccion.find({ edad: { $lt: 30 } })
+```
+Encuentra documentos donde la edad sea menor que 30.
+
+#### Operador `$in` (dentro de un conjunto):
+```shell
+db.mi_coleccion.find({ nombre: { $in: ["Juan Pérez", "Ana Gómez"] } })
+```
+Encuentra documentos donde el nombre esté dentro del conjunto especificado.
+
+#### Operador `$or` (o):
+```shell
+db.mi_coleccion.find({ $or: [{ nombre: "Juan Pérez" }, { edad: { $lt: 30 } }] })
+```
+Encuentra documentos que cumplan al menos una de las condiciones especificadas.
+
+## Actualizar (Update)
+
+Para actualizar documentos en una colección utilizamos el comando `updateOne()`, `updateMany()` o `replaceOne()`.
+
+### Ejemplo con `updateOne()`:
+```shell
+db.mi_coleccion.updateOne(
+    { nombre: "Juan Pérez" },
+    { $set: { edad: 31 } }
+)
+```
+
+### Sintaxis:
+```shell
+db.<nombre_coleccion>.updateOne({<criterio>}, {<actualizacion>})
+```
+
+- `<nombre_coleccion>`: Nombre de la colección donde se actualizarán los documentos.
+- `<criterio>`: Criterio de búsqueda para seleccionar los documentos a actualizar.
+- `<actualizacion>`: Documento que define los cambios a realizar. Utiliza operadores como `$set`, `$inc`, etc.
+
+### Ejemplo con `updateMany()`:
+```shell
+db.mi_coleccion.updateMany(
+    { ocupacion: "Desarrollador" },
+    { $set: { ocupacion: "Ingeniero de Software" } }
+)
+```
+
+### Sintaxis:
+```shell
+db.<nombre_coleccion>.updateMany({<criterio>}, {<actualizacion>})
+```
+
+- `<nombre_coleccion>`: Nombre de la colección donde se actualizarán los documentos.
+- `<criterio>`: Criterio de búsqueda para seleccionar los documentos a actualizar.
+- `<actualizacion>`: Documento que define los cambios a realizar.
+
+### Ejemplo con `replaceOne()`:
+```shell
+db.mi_coleccion.replaceOne(
+    { nombre: "Luis Torres" },
+    {
+        nombre: "Luis Torres",
+        edad: 36,
+        ocupacion: "Director"
+    }
+)
+```
+
+### Sintaxis:
+```shell
+db.<nombre_coleccion>.replaceOne({<criterio>}, {<nuevo_documento>})
+```
+
+- `<nombre_coleccion>`: Nombre de la colección donde se reemplazará el documento.
+- `<criterio>`: Criterio de búsqueda para seleccionar el documento a reemplazar.
+- `<nuevo_documento>`: Nuevo documento que reemplazará el documento existente.
+
+### Operadores de actualización
+
+#### Operador `$set` (establecer un valor):
+```shell
+db.mi_coleccion.updateOne(
+    { nombre: "Juan Pérez" },
+    { $set: { edad: 31 } }
+)
+```
+Establece el valor del campo `edad` a 31 en el documento que cumple el criterio.
+
+#### Operador `$inc` (incrementar):
+```shell
+db.mi_coleccion.updateOne(
+    { nombre: "Juan Pérez" },
+    { $inc: { edad: 1 } }
+)
+```
+Incrementa el valor del campo `edad` en 1 en el documento que cumple el criterio.
+
+#### Operador `$unset` (eliminar un campo):
+```shell
+db.mi_coleccion.updateOne(
+    { nombre: "Juan Pérez" },
+    { $unset: { ocupacion: "" } }
+)
+```
+Elimina el campo `ocupacion` del documento que cumple el criterio.
+
+## Eliminar (Delete)
+
+Para eliminar documentos de una colección utilizamos el comando `deleteOne()` o `deleteMany()`.
+
+### Ejemplo con `deleteOne()`:
+```shell
+db.mi_coleccion.deleteOne({ nombre: "Juan Pérez" })
+```
+
+### Sintaxis:
+```shell
+db.<nombre_coleccion>.deleteOne({<criterio>})
+```
+
+- `<nombre_coleccion>`: Nombre de la colección de la cual se eliminarán los documentos.
+- `<criterio>`: Criterio de búsqueda para seleccionar los documentos a eliminar.
+
+### Ejemplo con `deleteMany()`:
+```shell
+db.mi_coleccion.deleteMany({ ocupacion: "Diseñadora" })
+```
+
+### Sintaxis:
+```shell
+db.<nombre_coleccion>.deleteMany({<criterio>})
+```
+
+- `<nombre_coleccion>`: Nombre de la colección de la cual se eliminarán los documentos.
+- `<criterio>`: Criterio de búsqueda para seleccionar los documentos a eliminar.
+
+
