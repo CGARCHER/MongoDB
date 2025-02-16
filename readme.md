@@ -1,5 +1,7 @@
 # Tutorial sobre Bases de Datos NoSQL y MongoDB
 
+![MongoDB Logo](https://www.techcoil.com/blog/wp-content/uploads/mongoDB-logo.jpg)
+
 Este repositorio contiene un tutorial sobre bases de datos NoSQL, con un enfoque específico en MongoDB. También incluye una guía de instalación para usar un clúster de MongoDB Atlas junto con el plugin de VSCode.
 
 ## ¿Qué son las Bases de Datos NoSQL?
