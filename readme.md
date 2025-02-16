@@ -28,6 +28,8 @@ MongoDB es una base de datos NoSQL orientada a documentos, donde los datos se al
 
 ![Estructura mongoDB](https://formadoresit.es/wp-content/uploads/2019/05/image-4.png)
 
+![Comparativa SQL-NoSQL](https://github.com/user-attachments/assets/a029a1fb-1b88-4e69-82ee-441bde1d45ab)
+
 ## ¿Qué es BSON?
 
 BSON (Binary JSON) es un formato binario para representar documentos estructurados. Fue diseñado para ser eficiente en el almacenamiento y la consulta de datos en MongoDB. BSON extiende la representación JSON para incluir tipos de datos que no están disponibles en JSON estándar, como tipos de datos binarios y fechas.
