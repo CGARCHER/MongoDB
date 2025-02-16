@@ -194,13 +194,37 @@ Sigue estos pasos para configurar un clúster de MongoDB Atlas y conectarte a é
 3. Haz clic en "Add Connection" y pega la cadena de conexión copiada anteriormente.
 4. Guarda la conexión y debería aparecer en la lista de conexiones.
 
+## Crear una base de datos
+
+Para crear una base de datos en MongoDB, simplemente cambiamos a la base de datos que deseamos crear con el comando `use`.
+
+### Ejemplo:
+```shell
+use mi_base_de_datos
+```
+
+## Crear una colección
+
+Para crear una colección en una base de datos, utilizamos el comando `createCollection()`.
+
+### Ejemplo:
+```shell
+db.createCollection("mi_coleccion")
+```
+
+### Sintaxis:
+```shell
+db.createCollection("<nombre_coleccion>")
+```
+
+- `<nombre_coleccion>`: Nombre de la colección que se creará.
+
 ## Crear (Create)
 
 Para insertar un documento en una colección utilizamos el comando `insertOne()` o `insertMany()`.
 
 ### Ejemplo con `insertOne()`:
 ```shell
-use mi_base_de_datos
 db.mi_coleccion.insertOne({
     nombre: "Juan Pérez",
     edad: 30,
@@ -406,4 +430,50 @@ db.<nombre_coleccion>.deleteMany({<criterio>})
 - `<nombre_coleccion>`: Nombre de la colección de la cual se eliminarán los documentos.
 - `<criterio>`: Criterio de búsqueda para seleccionar los documentos a eliminar.
 
+## Usando MongoDB Playground en VSCode
+
+MongoDB Playground es una característica de MongoDB para escribir, ejecutar y depurar operaciones en MongoDB directamente desde Visual Studio Code.
+
+### Crear una base de datos y una colección
+
+1. Abre Visual Studio Code.
+2. Instala la extensión de MongoDB.
+3. Crea un nuevo archivo de Playground (`.mongodb`).
+4. Escribe el siguiente código en el archivo de Playground:
+
+```javascript
+// Crear una base de datos
+use('mi_base_de_datos');
+
+// Crear una colección
+db.createCollection('mi_coleccion');
+
+// Insertar documentos
+db.mi_coleccion.insertMany([
+    {
+        nombre: "Ana Gómez",
+        edad: 25,
+        ocupacion: "Diseñadora"
+    },
+    {
+        nombre: "Luis Torres",
+        edad: 35,
+        ocupacion: "Gerente"
+    }
+]);
+
+// Leer documentos
+db.mi_coleccion.find();
+
+// Actualizar documentos
+db.mi_coleccion.updateOne(
+    { nombre: "Luis Torres" },
+    { $set: { edad: 36 } }
+);
+
+// Eliminar documentos
+db.mi_coleccion.deleteOne({ nombre: "Ana Gómez" });
+```
+
+5. Ejecuta el Playground presionando `Ctrl+Shift+P` y seleccionando `MongoDB: Run Selected Playground`.
 
