@@ -15,14 +15,17 @@ Este repositorio contiene un tutorial sobre bases de datos NoSQL, con un enfoque
    - [Tipos de Datos en BSON](#tipos-de-datos-en-bson)
    - [Operadores en BSON](#operadores-en-bson)
 4. [Instalación de MongoDB Atlas y Configuración en VSCode](#instalación-de-mongodb-atlas-y-configuración-en-vscode)
-5. [Operaciones CRUD](#operaciones-crud)
+5. [Usando MongoDB Playground en VSCode](#usando-mongodb-playground-en-vscode)
+6. [Operaciones CRUD](#operaciones-crud)
    - [Crear una Base de Datos](#crear-una-base-de-datos)
    - [Crear una Colección](#crear-una-colección)
    - [Crear (Create)](#crear-create)
-   - [Leer (Read)](#leer-read)
+   - [Leer (Read)](#buscar-find)
    - [Actualizar (Update)](#actualizar-update)
    - [Eliminar (Delete)](#eliminar-delete)
-6. [Usando MongoDB Playground en VSCode](#usando-mongodb-playground-en-vscode)
+7. [Consulta en Array](consultaArray.md)
+8. [Consulta en Documento Embebido](consultaDocumentoEmbebido.md)
+
 
 ## ¿Qué son las Bases de Datos NoSQL?
 
@@ -212,6 +215,58 @@ Sigue estos pasos para configurar un clúster de MongoDB Atlas y conectarte a é
 3. Haz clic en "Add Connection" y pega la cadena de conexión copiada anteriormente.
 4. Guarda la conexión y debería aparecer en la lista de conexiones.
 
+## Usando MongoDB Playground en VSCode
+
+MongoDB Playground es una característica de MongoDB para escribir, ejecutar y depurar operaciones en MongoDB directamente desde Visual Studio Code.
+
+### Crear una base de datos y una colección
+
+1. Abre Visual Studio Code.
+2. Instala la extensión de MongoDB.
+3. Crea un nuevo archivo de Playground (`.mongodb`).
+4. Escribe el siguiente código en el archivo de Playground:
+
+```javascript
+// Crear una base de datos
+use('mi_base_de_datos');
+
+// Crear una colección
+db.createCollection('mi_coleccion');
+
+// Insertar documentos
+db.mi_coleccion.insertMany([
+    {
+        nombre: "Ana Gómez",
+        edad: 25,
+        ocupacion: "Diseñadora"
+    },
+    {
+        nombre: "Luis Torres",
+        edad: 35,
+        ocupacion: "Gerente"
+    }
+]);
+
+// Leer documentos
+db.mi_coleccion.find();
+
+//
+
+// Actualizar documentos
+db.mi_coleccion.updateOne(
+    { nombre: "Luis Torres" },
+    { $set: { edad: 36 } }
+);
+
+// Eliminar documentos
+db.mi_coleccion.deleteOne({ nombre: "Ana Gómez" });
+```
+
+5. Ejecuta el Playground presionando `Ctrl+Shift+P` y seleccionando `MongoDB: Run Selected Playground`.
+
+
+
+
 ## Operaciones CRUD
 
 ### Crear una Base de Datos
@@ -284,7 +339,7 @@ db.<nombre_coleccion>.insertMany([{<documento1>}, {<documento2>}, ...])
 - `<nombre_coleccion>`: Nombre de la colección donde se insertarán los documentos.
 - `<documento>`: Documentos BSON que se insertarán.
 
-### Leer (Read)
+### Buscar (Find)
 
 Para leer documentos de una colección utilizamos el comando `find()`.
 
@@ -449,53 +504,3 @@ db.<nombre_coleccion>.deleteMany({<criterio>})
 
 - `<nombre_coleccion>`: Nombre de la colección de la cual se eliminarán los documentos.
 - `<criterio>`: Criterio de búsqueda para seleccionar los documentos a eliminar.
-
-## Usando MongoDB Playground en VSCode
-
-MongoDB Playground es una característica de MongoDB para escribir, ejecutar y depurar operaciones en MongoDB directamente desde Visual Studio Code.
-
-### Crear una base de datos y una colección
-
-1. Abre Visual Studio Code.
-2. Instala la extensión de MongoDB.
-3. Crea un nuevo archivo de Playground (`.mongodb`).
-4. Escribe el siguiente código en el archivo de Playground:
-
-```javascript
-// Crear una base de datos
-use('mi_base_de_datos');
-
-// Crear una colección
-db.createCollection('mi_coleccion');
-
-// Insertar documentos
-db.mi_coleccion.insertMany([
-    {
-        nombre: "Ana Gómez",
-        edad: 25,
-        ocupacion: "Diseñadora"
-    },
-    {
-        nombre: "Luis Torres",
-        edad: 35,
-        ocupacion: "Gerente"
-    }
-]);
-
-// Leer documentos
-db.mi_coleccion.find();
-
-//
-
-// Actualizar documentos
-db.mi_coleccion.updateOne(
-    { nombre: "Luis Torres" },
-    { $set: { edad: 36 } }
-);
-
-// Eliminar documentos
-db.mi_coleccion.deleteOne({ nombre: "Ana Gómez" });
-```
-
-5. Ejecuta el Playground presionando `Ctrl+Shift+P` y seleccionando `MongoDB: Run Selected Playground`.
-
