@@ -231,4 +231,4 @@ En esta consulta, combinamos dos criterios utilizando una coma (que actúa como 
 
 ## Conclusión
 
-Esta documentación explica cómo realizar consultas sobre un conjunto de datos de profesores y sus asignaturas utilizando MongoDB. Las consultas específicas permiten filtrar los datos según criterios como el id de la asignatura, el nombre de la asignatura, el número de créditos y la edad del profesor. Al igual que Rafa Nadal en el tenis, dominar las consultas en MongoDB requiere práctica y precisión.
+Esta documentación explica cómo realizar consultas sobre un conjunto de datos de profesores y sus asignaturas utilizando MongoDB. Las consultas específicas permiten filtrar los datos según criterios como el id de la asignatura, el nombre de la asignatura, el número de créditos y la edad del profesor.

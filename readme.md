@@ -23,8 +23,9 @@ Este repositorio contiene un tutorial sobre bases de datos NoSQL, con un enfoque
    - [Leer (Read)](#buscar-find)
    - [Actualizar (Update)](#actualizar-update)
    - [Eliminar (Delete)](#eliminar-delete)
-7. [Consulta en Array](consultaArray.md)
-8. [Consulta en Documento Embebido](consultaDocumentoEmbebido.md)
+7. [Consulta en Array](docs/consultaArray.md)
+8. [Consulta en Documento Embebido](docs/consultaDocumentoEmbebido.md)
+9. [Agrupaciones](docs/agrupaciones.md)
 
 
 ## ¿Qué son las Bases de Datos NoSQL?
