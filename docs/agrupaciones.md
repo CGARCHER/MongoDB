@@ -1,8 +1,4 @@
-# Documentación para Agrupaciones en MongoDB
-
-En esta documentación se explicarán las agrupaciones en MongoDB, una característica poderosa que permite realizar operaciones de agregación en documentos. Se utilizará el framework de agregación de MongoDB para realizar ejemplos prácticos.
-
-## Agrupaciones en MongoDB
+# Agrupaciones en MongoDB
 
 Las agrupaciones en MongoDB se realizan utilizando el framework de agregación. Este framework proporciona una forma de procesar datos de documentos y devolver resultados computados. Utiliza un pipeline de etapas, donde cada etapa transforma los documentos de entrada y pasa los resultados a la siguiente etapa.
 
