@@ -219,6 +219,9 @@ Resultado:
 ]
 ```
 
+### 6. Ejemplo Completo: Agrupar, Proyectar y Ordenar
+Calcular el precio total de cada artículo para aquellos que tengan una cantidad mayor a 5
+
 ## Conclusión
 
 Esta documentación explica cómo realizar agrupaciones en MongoDB utilizando el framework de agregación. Las consultas de ejemplo demuestran cómo agrupar documentos, calcular el total de ventas, el precio promedio, contar artículos, filtrar resultados, proyectar campos, ordenar, limitar y omitir resultados según criterios específicos. Al igual que Rafa Nadal y Roger Federer en el tenis, dominar las agrupaciones en MongoDB requiere práctica y precisión.
