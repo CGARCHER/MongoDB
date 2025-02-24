@@ -219,7 +219,7 @@ Resultado:
 ]
 ```
 
-### 6. Ejemplo Completo: Agrupar, Proyectar y Ordenar
+### 6.
 Calcular el precio total de cada artículo para aquellos que tengan una cantidad mayor a 5.
 
 ## Conclusión
